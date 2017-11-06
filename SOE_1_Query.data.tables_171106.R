@@ -172,9 +172,9 @@ maxn.count<-maxn%>%
   data.frame()
 head(maxn.count,2)#This give the MaxN with first Period time
 
-tail(maxn.count,2)
-
 # ADD a filter here to limit the dataset---
+maxn.count%<>%
+  filter(Species=="auratus")
 write_tsv(maxn.count, path=paste(study,"MaxN.txt",sep = "."))
 
 
@@ -195,6 +195,8 @@ length3dpoints%<>%
 head(length3dpoints,2) 
 
 # ADD a filter here to limit the dataset---
+length3dpoints%<>%
+  filter(Species=="auratus")
 
 write_tsv(length3dpoints, path=paste(study,"Len3DPoints.txt",sep = "."))
 
