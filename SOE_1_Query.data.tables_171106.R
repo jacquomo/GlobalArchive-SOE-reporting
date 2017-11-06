@@ -42,7 +42,6 @@ study<-"SOE"
 
 
 # Set work directory----
-# Must share this with Jac
 work.dir=("~/Google Drive/Analysis/Analysis_GlobalArchive_SOE_reporting")
 
 # Set sub directories----
