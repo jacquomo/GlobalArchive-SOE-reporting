@@ -43,11 +43,11 @@ library(readr)
 
 # Study name----
 rm(list=ls()) #clear memory
-study<-"Example"
+study<-"SOE"
 
 
 # Set work directory----
-work.dir=("~/Google Drive/Analysis/Analysis_Example")
+work.dir=("~/Google Drive/Analysis/Analysis_GlobalArchive_SOE_reporting")
 
 # Set sub directories----
 data.dir=paste(work.dir,"Data",sep="/")
@@ -130,7 +130,7 @@ Life_history <- gs_title("Life_history")#register a sheet
 master<-Life_history%>%
   gs_read_csv(ws = "Life_history")%>%
   filter(grepl('Australia', Global.region))%>%
-  filter(grepl('Ningaloo|Pilbara', Local.region))%>%
+  filter(grepl('Ningaloo|Pilbara|West|SouthWest', Local.region))%>%
   mutate(aLL=as.numeric(aLL))%>%
   mutate(bLL=as.numeric(bLL))%>%
   mutate(a=as.numeric(a))%>%
@@ -230,7 +230,7 @@ head(complete.length.number.mass,2)
 
 
 
-
+####################################
 # Additional Example of how to expand complete.length.number.mass for calculating hisotgrams, KDEs in further analyses----
   
   
