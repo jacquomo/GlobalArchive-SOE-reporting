@@ -47,11 +47,11 @@ library(RCurl) #needed to download data from GitHub
 
 # Study name----
 rm(list=ls()) #clear memory
-study<-"Example"
+study<-"SOE"
 
 
 # Set work directory----
-work.dir=("~/Google Drive/Analysis/Analysis_Example")
+work.dir=("~/Google Drive/Analysis/Analysis_GlobalArchive_SOE_reporting")
 
 # Set sub directories----
 data.dir=paste(work.dir,"Data",sep="/")
