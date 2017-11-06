@@ -157,7 +157,7 @@ Life_history <- gs_title("Life_history")#register a sheet
 master<-Life_history%>%
   gs_read_csv(ws = "Life_history")%>%
   filter(grepl('Australia', Global.region))%>%
-  filter(grepl('Ningaloo|Pilbara', Local.region))%>%
+  filter(grepl('Ningaloo|Pilbara|West|SouthWest', Local.region))%>%
   data.table()
 head(master,7)
 str(master)
@@ -172,6 +172,7 @@ maxn$Genus_species <- gsr(maxn$Genus_species, change$Genus_species, change$Chang
 # For Length
 length$Genus_species <- gsr(length$Genus_species, change$Genus_species, change$Change.to)
 
+head(maxn)
 
 # Check for taxa.not.match----
 setwd(data.dir)
