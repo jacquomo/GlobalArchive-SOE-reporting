@@ -15,7 +15,7 @@
 
 # 1. Import metadata, points, lengths and 3Dpoints for multiple Campaigns
 # 2. Summarise to create MaxN and Length3Dpoint data
-# 3. If PeriodTime has been set to zero at Time os Seabed in EM - this query will return the first PeriodTime of MaxN. Example included below of how to change to last PeriodTime.
+# 3. If PeriodTime has been set to zero at Time on Seabed in EM - this query will return the first PeriodTime of MaxN. Example included below of how to change to last PeriodTime.
 # 4. Right-join these files with metadata - to result in MaxN and Length3Dpoint data that have Sample/OpCodes included that had no points or measures (i.e. a sample with no fish!)
 
 
@@ -42,7 +42,8 @@ study<-"SOE"
 
 
 # Set work directory----
-work.dir=("~/Google Drive/Analysis/Analysis_GlobalArchive_SOE_reporting")
+#work.dir=("~/Google Drive/Analysis/Analysis_GlobalArchive_SOE_reporting") #Not workin on Jac's machine
+work.dir=("C:/Users/jmonk1/Google Drive/Analysis_GlobalArchive_SOE_reporting")
 
 # Set sub directories----
 data.dir=paste(work.dir,"Data",sep="/")
@@ -58,14 +59,15 @@ metadata.files <- list.files(pattern="_Metadata.txt")
 metadata <- NULL
 for (t in metadata.files) {
   dat <- read_tsv(t, col_names=T,na = c("", " "))
-  metadata <- rbind.fill(metadata, dat)
+  dat$Date <- as.Date(as.POSIXct(dat$Date, format="%Y/%m/%d"))
+  metadata <- plyr::rbind.fill(metadata, dat)
 }
 metadata%<>%select(CampaignID,Sample,Latitude,Longitude,Date,Time,Location,Status,Site,Depth,Observer,Successful)%>%
   mutate(Date=as.character(Date))%>% #TJL something wrong with date? Need to be fixed
   data.frame()
 head(metadata,2)
 unique(metadata$CampaignID)
-
+unique(metadata$Date)
 # Import EventMeasure data tables----
 # Import EM points---
 points.files <- list.files(pattern="_Points.txt")
