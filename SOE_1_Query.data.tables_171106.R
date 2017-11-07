@@ -65,11 +65,10 @@ for (t in metadata.files) {
 metadata%<>%select(CampaignID,Sample,Latitude,Longitude,Date,Time,Location,Status,Site,Depth,Observer,Successful)%>%
   data.frame()
 head(metadata,2)
-unique(metadata$CampaignID)
-unique(metadata$Date) #Check that all dates make sense
 
 unique(metadata$Date)
 unique(metadata$CampaignID)
+
 
 # Import EventMeasure data tables----
 # Import EM points---
