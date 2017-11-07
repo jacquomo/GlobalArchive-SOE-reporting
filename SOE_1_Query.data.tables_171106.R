@@ -66,8 +66,10 @@ metadata%<>%select(CampaignID,Sample,Latitude,Longitude,Date,Time,Location,Statu
   mutate(Date=as.character(Date))%>% #TJL something wrong with date? Need to be fixed
   data.frame()
 head(metadata,2)
-unique(metadata$CampaignID)
+str(metadata)
 unique(metadata$Date)
+unique(metadata$CampaignID)
+
 # Import EventMeasure data tables----
 # Import EM points---
 points.files <- list.files(pattern="_Points.txt")
