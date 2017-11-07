@@ -68,6 +68,8 @@ head(metadata,2)
 unique(metadata$CampaignID)
 unique(metadata$Date) #Check that all dates make sense
 
+unique(metadata$Date)
+unique(metadata$CampaignID)
 
 # Import EventMeasure data tables----
 # Import EM points---
