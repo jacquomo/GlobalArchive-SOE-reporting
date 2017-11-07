@@ -63,11 +63,12 @@ for (t in metadata.files) {
   metadata <- plyr::rbind.fill(metadata, dat)
 }
 metadata%<>%select(CampaignID,Sample,Latitude,Longitude,Date,Time,Location,Status,Site,Depth,Observer,Successful)%>%
-  mutate(Date=as.character(Date))%>% #TJL something wrong with date? Need to be fixed
   data.frame()
 head(metadata,2)
 unique(metadata$CampaignID)
-unique(metadata$Date)
+unique(metadata$Date) #Check that all dates make sense
+
+
 # Import EventMeasure data tables----
 # Import EM points---
 points.files <- list.files(pattern="_Points.txt")
